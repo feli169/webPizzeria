@@ -3,7 +3,8 @@ import './App.css'
 import Nav from './components/NavBar/Nav'
 // import Home from './components/Home/Home'
 import Footer from './components/Footer/Footer'
-import Formulario from './components/Formulario/Formulario'
+// import Formulario from './components/Formulario/Formulario'
+import Cart from './components/Cart/Cart'
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
     <>
       <Nav/>
       {/* <Home/>  */}
-      <Formulario/>
+      {/* <Formulario/> */}
+      <Cart/>
       <Footer/>
     </>
   )
