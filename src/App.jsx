@@ -1,22 +1,26 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
-import Nav from './components/NavBar/Nav'
-// import Home from './components/Home/Home'
-import Footer from './components/Footer/Footer'
-// import Formulario from './components/Formulario/Formulario'
-import Cart from './components/Cart/Cart'
+import { useState } from "react";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import Formulario from "./components/Formulario";
+import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 function App() {
+  const [pantallaActual, setPantallaActual] = useState("home");
 
-  return (
-    <>
-      <Nav/>
-      {/* <Home/>  */}
-      {/* <Formulario/> */}
-      <Cart/>
-      <Footer/>
-    </>
-  )
-}
+    return (
+        <div>
+              <Nav cambiarPantalla={setPantallaActual} />
 
-export default App
+                    {/* Renderizado condicional */}
+                          {pantallaActual === "home" && <Home />}
+                                {pantallaActual === "formulario" && <Formulario />}
+                                      {pantallaActual === "cart" && <Cart />}
+                                            {/* Puedes agregar más pantallas si quieres */}
+                                                  
+                                                        <Footer />
+                                                            </div>
+                                                              );
+                                                              }
+
+                                                              export default App;
