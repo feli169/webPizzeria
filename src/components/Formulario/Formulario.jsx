@@ -94,7 +94,7 @@ const Formulario = () => {
       {error && <Alert  alerta ='Completa todos los campos !'/>}
       {errorPass && <Alert  alerta ='Las contraseñas no coinciden'/>}
       {exito && <Alert alerta="¡Registro exitoso!" tipo="exito" />}
-      {largo && <Alert alerta ='Por favor ingresa una contraceña más larga'/>}
+      {largo && <Alert alerta ='Por favor ingresa una contraseña más larga'/>}
     </div>
   );
   

@@ -1,3 +1,6 @@
+
+
+
 const CardPizza = ({ name, price, ingredients, img }) => {
   return (
     <div
