@@ -1,15 +1,34 @@
 import "./Grid.css"
 import "../CardPizza/CardPizza"
 import CardPizza from "../CardPizza/CardPizza"
-import pizzas from '../../Data'
+import { useEffect, useState } from "react"
 
 const Grid = () => {
+
+const [pizza, setPizza] = useState ([]) 
+
+useEffect ( () =>{
+    const traerData = async ()  =>{
+        try {
+            const data = await fetch ("http://localhost:5000/api/pizzas")
+            const restdata =await data.json ();
+            setPizza (restdata)
+            
+        } catch (error) {
+            alert("Ocurrio un error")
+        }
+         }
+      traerData()      
+    }, [ ]
+)
+console.log(pizza)
+
   return (
     <div>
       <div className="container d-flex flex-wrap justify-content-center gap-4 mt-4">
-      {pizzas.map((pizza, index) => (
+      {pizza.map((pizza) => (
         <CardPizza
-          key={index}
+          key={pizza.id}
           name={pizza.name}
           price={pizza.price}
           ingredients={pizza.ingredients}
