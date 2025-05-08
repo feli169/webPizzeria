@@ -1,8 +1,5 @@
-import Header from "../Header/Header"
-import Grid from "../Grid/Grid";
-
-
-
+import Header from "../../components/Header/Header"
+import Grid from "../../components/Grid/Grid";
 
 const Home = () => {
   return (

@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-const CardPizza = ({ name, price, ingredients, img }) => {
+const PagePizza = ({name, price, ingredients, img, desc, verMas}) =>{
   return (
-    <div
+    <div>
+      <div
       className="card text-center shadow-sm p-3 mb-4"
       style={{ width: "18rem" }}
     >
@@ -15,15 +15,14 @@ const CardPizza = ({ name, price, ingredients, img }) => {
             <span key={index}>🍕 {ingredient}</span>
           ))}
         </div>
+        <p>{desc}</p>
         <div className="buton d-flex flex-row justify-content-between align-items-center">
-          <Link
-          to="/pizza">
-            <button className="btn btn-secondary mt-3">Ver más👀</button></Link>
+          <button className="btn btn-secondary mt-3" onClick={() => verMas("ver")}>Ver más👀</button>
           <button className="btn btn-dark mt-3">Añadir🛒</button>
         </div>
       </div>
     </div>
-  );
-};
-
-export default CardPizza;
+    </div>
+  )
+}
+export default PagePizza

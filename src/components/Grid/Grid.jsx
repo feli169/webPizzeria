@@ -1,11 +1,10 @@
 import "./Grid.css"
-import "../CardPizza/CardPizza"
 import CardPizza from "../CardPizza/CardPizza"
 import { useEffect, useState } from "react"
 
 const Grid = () => {
 
-const [pizza, setPizza] = useState ([]) 
+const [pizza, setPizza] = useState ([ ]) 
 
 useEffect ( () =>{
     const traerData = async ()  =>{
@@ -21,7 +20,6 @@ useEffect ( () =>{
       traerData()      
     }, [ ]
 )
-console.log(pizza)
 
   return (
     <div>
@@ -33,6 +31,7 @@ console.log(pizza)
           price={pizza.price}
           ingredients={pizza.ingredients}
           img={pizza.img}
+         
         />
       ))}
     </div>

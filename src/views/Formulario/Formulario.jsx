@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Formulario.css";
-import Alert from "../Alert/Alert"
+import Alert from "../../components/Alert/Alert"
 
 const Formulario = () => {
   const [nombre, setNombre] = useState("");
