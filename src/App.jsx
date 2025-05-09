@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Nav from "./views/NavBar/Nav";
+import Nav from "./components/NavBar/Nav";
 import Home from "./views/Home/Home";
 import Formulario from "./views/Formulario/Formulario";
 import Cart from "./views/Cart/Cart";
 import Pizza from "./views/Pizza/Pizza";
-import Footer from "./views/Footer/Footer";
+import Footer from "./components/Footer/Footer"
 
 function App() {
   return (

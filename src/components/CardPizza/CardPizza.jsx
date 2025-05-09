@@ -17,7 +17,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
         </div>
         <div className="buton d-flex flex-row justify-content-between align-items-center">
          
-            <button className="btn btn-secondary mt-3">Ver más👀</button>
+            <Link to ="/pizza"><button className="btn btn-secondary mt-3">Ver más👀</button></Link>
           <button className="btn btn-dark mt-3">Añadir🛒</button>
         </div>
       </div>
