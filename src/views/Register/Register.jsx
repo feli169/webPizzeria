@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Formulario.css";
+import "./Register.css";
 import Alert from "../../components/Alert/Alert"
 
 const Formulario = () => {
@@ -38,7 +38,7 @@ const Formulario = () => {
   };
 
   return (
-    <div className="container text-center bg-white p-4 mt-3">
+    <div className="container text-center bg-white p-4 mt-3 vh-100">
 
       <form onSubmit={validarIngreso}>
         <div className="form-group">

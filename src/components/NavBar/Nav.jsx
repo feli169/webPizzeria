@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-
 import "./Nav.css";
 
 const Nav = () => {
   const total = 25000;
-  const token = false;
+  const token = true;
+
+  
 
   return (
     <div>
@@ -19,24 +20,29 @@ const Nav = () => {
 
         {token ? (
           <>
+          <Link
+          to="/profile">
             <button type="button" className="btnNav btn btn-secondary me-2">
               🔓 Profile
             </button>
+          </Link>
+
             <button type="button" className="btnNav btn btn-secondary me-2">
               🔒 Logout
             </button>
           </>
         ) : (
           <>
-            <Link to="/login">
+      <Link to="/login">
               <button type="button" className="btnNav btn btn-secondary me-2">
                 🔐 Login
               </button>
-            </Link>
-
+           </Link>
+      <Link to="/register">
             <button type="button" className="btnNav btn btn-secondary me-2">
               🔐 Register
             </button>
+            </Link>
           </>
         )}
         <Link to="/cart">
