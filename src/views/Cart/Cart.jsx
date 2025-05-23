@@ -1,35 +1,30 @@
-import pizzas from "../../Data";
-import { useState } from "react";
-
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext"; // importacion
 const Cart = () => {
-  const [cart, setCart] = useState(
-    pizzas.map((pizza) => ({
-      ...pizza,
-      cantInicial: 1,
-    }))
-  );
+  const { cart, setCart } = useContext(CartContext); // llamada
 
   const handleAumento = (name) => {
-    const actual = cart.map((pizza) =>
+    const updatedCart = cart.map((pizza) =>
       pizza.name === name
-        ? { ...pizza, cantInicial: pizza.cantInicial + 1 }
+        ? { ...pizza, cantidad: pizza.cantidad + 1 }
         : pizza
     );
-    setCart(actual);
-  };
-  const handleDecremento = (name) => {
-    const actual = cart
-      .map((pizza) =>
-        pizza.name === name
-          ? { ...pizza, cantInicial: pizza.cantInicial - 1 }
-          : pizza
-      )
-      .filter((pizza) => pizza.cantInicial > 0);
-    setCart(actual);
+    setCart(updatedCart);
   };
 
-  const total = cart.reduce(
-    (aumulador, pizza) => aumulador + pizza.price * pizza.cantInicial,
+  const handleDecremento = (name) => {
+    const updatedCart = cart
+      .map((pizza) =>
+        pizza.name === name
+          ? { ...pizza, cantidad: pizza.cantidad - 1 }
+          : pizza
+      )
+      .filter((pizza) => pizza.cantidad > 0);
+    setCart(updatedCart);
+  };
+
+  const total = cart.reduce( //utilizacion
+    (acc, pizza) => acc + pizza.price * pizza.cantidad,
     0
   );
 
@@ -41,7 +36,7 @@ const Cart = () => {
       ) : (
         cart.map((pizza) => (
           <div
-            key={pizza.name}
+            key={pizza.id}
             className="card mb-3 d-flex flex-row align-items-center p-2"
           >
             <img
@@ -53,7 +48,7 @@ const Cart = () => {
             <div className="flex-grow-1">
               <h5>{pizza.name}</h5>
               <p>
-                ${pizza.price.toLocaleString()} x {pizza.cantInicial}
+                ${pizza.price.toLocaleString()} x {pizza.cantidad}
               </p>
             </div>
             <div className="d-flex align-items-center">
@@ -63,7 +58,7 @@ const Cart = () => {
               >
                 -
               </button>
-              <span>{pizza.cantInicial}</span>
+              <span>{pizza.cantidad}</span>
               <button
                 className="btn btn-success ms-2"
                 onClick={() => handleAumento(pizza.name)}
@@ -76,7 +71,7 @@ const Cart = () => {
       )}
       {cart.length > 0 && (
         <div className="mt-4 text-end">
-          <h4>Total: ${total.toLocaleString()}</h4>
+          <h4>Total: ${total.toLocaleString()}</h4> // utilizacion
           <button className="btn btn-primary mt-2">Pagar 💳</button>
         </div>
       )}

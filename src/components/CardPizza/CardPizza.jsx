@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom";
-const CardPizza = ({ name, price, ingredients, img }) => {
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
+
+const CardPizza = (pizza = { }) => {
+
+   const { addToCart } = useContext(CartContext);
+   const {name, price, ingredients, img} = pizza;
+
   return (
     <div
       className="card text-center shadow-sm p-3 mb-4"
@@ -18,7 +25,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
         <div className="buton d-flex flex-row justify-content-between align-items-center">
          
             <Link to ="/pizza"><button className="btn btn-secondary mt-3">Ver más👀</button></Link>
-          <button className="btn btn-dark mt-3">Añadir🛒</button>
+          <button className="btn btn-dark mt-3" onClick={() => addToCart(pizza)} >Añadir🛒</button>
         </div>
       </div>
     </div>
