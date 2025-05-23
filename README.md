@@ -13,3 +13,5 @@
 *Se agrega componente Pizza*
 
 *Se rutea todo con react router*
+
+*Se agrega contextCart*
