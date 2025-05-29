@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 
-const CardPizza = (pizza = { }) => {
+const CardPizza = ( {pizza }) => {
 
    const { addToCart } = useContext(CartContext);
-   const {name, price, ingredients, img} = pizza;
+   const {name, price, ingredients, img, id} = pizza;
 
+   const navigate = useNavigate ();
+
+   const selectPizza = () =>{
+    
+    console.log(id)
+    navigate(`/pizza/${id}`)
+   }
   return (
     <div
       className="card text-center shadow-sm p-3 mb-4"
@@ -24,7 +31,9 @@ const CardPizza = (pizza = { }) => {
         </div>
         <div className="buton d-flex flex-row justify-content-between align-items-center">
          
-            <Link to ="/pizza"><button className="btn btn-secondary mt-3">Ver más👀</button></Link>
+
+            <button onClick={selectPizza} className="btn btn-secondary mt-3">Ver más👀</button>
+
           <button className="btn btn-dark mt-3" onClick={() => addToCart(pizza)} >Añadir🛒</button>
         </div>
       </div>

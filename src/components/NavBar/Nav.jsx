@@ -1,26 +1,30 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext"; //Importacion
+import { CartContext } from "../../Context/CartContext"; 
 
 import "./Nav.css";
 
 const Nav = () => {
-    const token = true;
+  
+  const { total, itemCount } = useContext(CartContext); 
+  const {token, setToken} =useContext(CartContext);
 
-  const { total, itemCount } = useContext(CartContext); //llamada
+  const log_out = () => {
+  setToken(false);
+};
 
   return (
   
-      <div className="d-flex align-items-center gap-2 bg-dark px-4 py-auto  top-0 vw-100">
-        <h1 className="text-light me-3">Pizzería Mama Mia</h1>
+      <div className="nav d-flex align-items-center gap-2 bg-dark px-4 py-auto  top-0 vw-100">
+        <Link to="/" className="text-decoration-none"><h1 className="text-light me-3">Pizzería Mama Mia</h1></Link>
 
-        <Link to="/">
+<Link to="/">
           <button type="button" className="btnNav btn btn-secondary me-2">
             🍕 Home
           </button>
         </Link>
-
-        {token ? (
+        
+               {token ? (
           <>
           <Link
           to="/profile">
@@ -28,13 +32,18 @@ const Nav = () => {
               🔓 Profile
             </button>
           </Link>
-
-            <button type="button" className="btnNav btn btn-secondary me-2">
+                <Link to="/">
+            <button onClick={log_out} type="button" className="btnNav btn btn-secondary me-2">
               🔒 Logout
-            </button>
+            </button> 
+            </Link>
+
+           
           </>
         ) : (
           <>
+         
+
       <Link to="/login">
               <button type="button" className="btnNav btn btn-secondary me-2">
                 🔐 Login
@@ -47,9 +56,9 @@ const Nav = () => {
             </Link>
           </>
         )}
-        <Link to="/cart">
+         <Link to="/cart">
           <button type="button" className="btnNav btn btn-secondary ms-auto">
-            🛒 Cant: {itemCount}  Total: ${total.toLocaleString()} //Uso
+            🛒 Cant: {itemCount}  Total: ${total.toLocaleString()} 
           </button>
         </Link>
       </div>

@@ -1,7 +1,7 @@
 
 const NotFound404 = () => {
   return (
-    <div className="container text-center vh-100"
+    <div className="container my-5 py-4 text-center vh-100"
 >
         <h3>Error</h3>
       <h1> <strong>4  0  4</strong> </h1>

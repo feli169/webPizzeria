@@ -13,3 +13,7 @@
 *Se agrega componente Pizza*
 
 *Se rutea todo con react router*
+
+*Se agrega contex*
+
+*Se Agrega Router condicional con un  token*

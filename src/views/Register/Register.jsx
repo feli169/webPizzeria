@@ -38,7 +38,7 @@ const Formulario = () => {
   };
 
   return (
-    <div className="container text-center bg-white p-4 mt-3 vh-100">
+    <div className="container text-center bg-white p-4 my-5 vh-100">
 
       <form onSubmit={validarIngreso}>
         <div className="form-group">

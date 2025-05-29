@@ -21,8 +21,12 @@ const CartProvider = ({ children }) => {//  que va a ahcer el contexto
   const total = cart.reduce((acc, pizza) => acc + pizza.price * pizza.cantidad, 0); // calculamos el total
   const itemCount = cart.reduce((acc, pizza) => acc + pizza.cantidad, 0); // contamos las pizzas
 
+const [token, setToken] = useState(true);
+
+
+
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, total, itemCount }}>
+    <CartContext.Provider value={{ cart, setCart, addToCart, total, itemCount, token, setToken, }}>
       {children}
     </CartContext.Provider> //definimos el proveedor
   );

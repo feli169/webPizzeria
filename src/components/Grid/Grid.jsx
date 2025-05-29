@@ -25,13 +25,8 @@ useEffect ( () =>{
     <div>
       <div className="container d-flex flex-wrap justify-content-center gap-4 mt-4">
       {pizza.map((pizza) => (
-        <CardPizza
-          key={pizza.id}
-          name={pizza.name}
-          price={pizza.price}
-          ingredients={pizza.ingredients}
-          img={pizza.img}
-         
+        <CardPizza key={pizza.id} pizza={pizza} 
+        
         />
       ))}
     </div>

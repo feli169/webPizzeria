@@ -3,7 +3,7 @@ import Grid from "../../components/Grid/Grid";
 
 const Home = () => {
   return (
-    <div className="home">
+    <div className="home py-5 mb-5">
       <Header/>
     <Grid/>
     </div>

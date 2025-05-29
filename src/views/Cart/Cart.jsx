@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext"; // importacion
+import { CartContext } from "../../Context/CartContext"; 
 const Cart = () => {
-  const { cart, setCart } = useContext(CartContext); // llamada
+  const { cart, setCart,token } = useContext(CartContext); 
+
 
   const handleAumento = (name) => {
     const updatedCart = cart.map((pizza) =>
@@ -23,16 +24,16 @@ const Cart = () => {
     setCart(updatedCart);
   };
 
-  const total = cart.reduce( //utilizacion
+  const total = cart.reduce(
     (acc, pizza) => acc + pizza.price * pizza.cantidad,
     0
   );
 
   return (
-    <div className="container mt-5">
+    <div className="container my-5 py-4 text-center">
       <h2 className="mb-4">🛒 Carrito de Compras</h2>
       {cart.length === 0 ? (
-        <p>Tu carrito está vacío.</p>
+        <p className="vh=100 ">Tu carrito está vacío.</p>
       ) : (
         cart.map((pizza) => (
           <div
@@ -69,12 +70,17 @@ const Cart = () => {
           </div>
         ))
       )}
-      {cart.length > 0 && (
-        <div className="mt-4 text-end">
-          <h4>Total: ${total.toLocaleString()}</h4> // utilizacion
-          <button className="btn btn-primary mt-2">Pagar 💳</button>
+     
+      {!token  ?(
+      <h5>Inicia sesión para realizar compras</h5>
+      ) : cart.length === 0 ? (
+        <h5>Nada por aquí</h5>
+    ):(<div className="mt-4 text-end">
+                <h4>Total: ${total.toLocaleString()}</h4>
+     <button className="btn btn-primary mt-2">Pagar 💳</button>  
+
         </div>
-      )}
+    )}
     </div>
   );
 };

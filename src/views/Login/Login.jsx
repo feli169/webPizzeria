@@ -34,11 +34,12 @@ const Formulario = () => {
   };
 
   return (
-    <div className="container text-center bg-white p-4 mt-3 vh-100">
+    <div className="container text-center bg-white p-4 mt-5 vh-100">
 
       <form onSubmit={validarIngreso}>
       
         <div className="form-group">
+          <h1>Iniciar sesión</h1>
           <label>Email</label>
           <input
             placeholder="tuemail@ejemplo.com"
