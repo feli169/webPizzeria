@@ -14,7 +14,7 @@ import { CartContext } from "./Context/CartContext";
 
 
 function App() {
-  const {token} =useContext(CartContext); 
+  const {userData} =useContext(CartContext); 
 
   return (
     <div className="d-flex flex-column" style={{ height: "100vh" }}>
@@ -24,7 +24,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" 
-          element={token? <Profile /> : <Navigate to= "/"/>} />
+          element={userData? <Profile /> : <Navigate to= "/"/>} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/pizza/:id" element={<Pizza />} />
           <Route path="/*" element={<NotFound404 />} />

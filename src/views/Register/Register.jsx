@@ -1,46 +1,19 @@
 import { useState } from "react";
 import "./Register.css";
 import Alert from "../../components/Alert/Alert"
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
+
 
 const Formulario = () => {
-  const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState("");
-  const [contraseña, setContraseña] = useState("");
-  const [confirmacion, setConfirmacion] = useState("");
-  const [error, setError] = useState(false);
-  const [errorPass, setErrorPass] = useState(false);
-  const [largo, setLargo] = useState('');
-  const [exito, setExito] = useState(false);
+const {handleRegister, error, errorPass, largo, exito, nombre, setNombre, userEmail, setUserEmail, contraseña, setContraseña, confirmacion, setConfirmacion } =useContext(CartContext);
+  
 
-  const validarIngreso = (e) => {
-    e.preventDefault();
-
-    let camposVacios = nombre === "" || email === "" || contraseña === "" ||confirmacion === "";
-    let contracenaCorta = contraseña.length < 6;
-    let contracenasDistintas = contraseña !== confirmacion;
-
-    setError (camposVacios);
-    setErrorPass (contracenasDistintas);
-    setLargo(contracenaCorta);
-
-    if (camposVacios || contracenasDistintas || contracenaCorta)  {
-     setExito(false);
-      return;
-    }
-   
-    setError(false);
-    setErrorPass(false);
-    setNombre("");
-    setEmail("");
-    setContraseña("");
-    setConfirmacion("");
-    setExito(true);
-  };
 
   return (
     <div className="container text-center bg-white p-4 my-5 vh-100">
 
-      <form onSubmit={validarIngreso}>
+      <form onSubmit={handleRegister}>
         <div className="form-group">
           <label>Nombre</label>
           <input
@@ -58,8 +31,8 @@ const Formulario = () => {
             placeholder="tuemail@ejemplo.com"
             type="email"
             className=" form-control "
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            onChange={(e) => setUserEmail(e.target.value)}
+            value={userEmail}
           />
         </div>
 

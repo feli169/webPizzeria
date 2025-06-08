@@ -5,4 +5,5 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   base: "https://feli169.github.io/webPizzeria",
+  server: {open: true},
 })

@@ -1,79 +1,50 @@
-import { useState } from "react";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
+import Alert from "../../components/Alert/Alert";
 import "./Login.css";
-import Alert from "../../components/Alert/Alert"
 
-const Formulario = () => {
-  const [email, setEmail] = useState("");
-  const [contraseña, setContraseña] = useState("");
-  const [error, setError] = useState(false);
-  const [userNotFound, setUserNotFound] = useState(false);
-  const [contracenaIncorrecta, setContracenaIncorrecta] = useState('');
-  const [exito, setExito] = useState(false);
 
-  const validarIngreso = (e) => {
-    e.preventDefault();
+const Login = () => {
+  const { handleLogin, setEmail, setPassword, alerta } = useContext(CartContext);
 
-    let camposVacios =  email === "" || contraseña === "" ;
-    let contracenaIncorrecta = contraseña !== "123456";
-    let userNotFoun = email !== "mail@ejemplol.com";
-
-    setError (camposVacios);
-    setUserNotFound (userNotFoun);
-    setContracenaIncorrecta(contracenaIncorrecta);
-
-    if (camposVacios || userNotFoun || contracenaIncorrecta)  {
-     setExito(false);
-      return;
-    }
-   
-    setError(false);
-    setUserNotFound(false);
-    setEmail("");
-    setContraseña("");
-    setExito(true);
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
   };
-
+  const handlePass = (e) => {
+    setPassword(e.target.value);
+  };
   return (
-    <div className="container text-center bg-white p-4 mt-5 vh-100">
+    <div>
+      <Form className="container  mt-5 pt-5 w-25" onSubmit={handleLogin}>
+        <Form.Group
+          className="mb-3"
+          controlId="formBasicEmail"
+          onChange={handleEmail}
+        >
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" placeholder="Ejemplo@mail.com" />
+        </Form.Group>
 
-      <form onSubmit={validarIngreso}>
-      
-        <div className="form-group">
-          <h1>Iniciar sesión</h1>
-          <label>Email</label>
-          <input
-            placeholder="tuemail@ejemplo.com"
-            type="email"
-            className=" form-control "
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
+        <Form.Group
+          className="mb-3"
+          controlId="formBasicPassword"
+          onChange={handlePass}
+        >
+          <Form.Label>Contraceña</Form.Label>
+          <Form.Control type="password" placeholder="" />
+        </Form.Group>
+        <div className="text-center">
+          <Button className="w-50" variant="primary" type="submit">
+            Iniciar sesión
+          </Button>
         </div>
-
-        <div className="form-group ">
-          <label>Contraseña</label>
-          <input
-            placeholder="Contraseña"
-            type="password"
-            style={contracenaIncorrecta ? { border: '2px solid red' } : {}}
-            className="form-control  "
-            onChange={(e) => setContraseña(e.target.value)}
-            value={contraseña}
-          />
-        </div>
-
-        
-        <button className="btn btn-dark  px-3 mt-2" type="submit">
-            Login
-        </button>
-      </form>
-      {error && <Alert  alerta ='Completa todos los campos !'/>}
-      {userNotFound && <Alert  alerta ='Usuario no encontrado.'/>}
-      {exito && <Alert alerta="¡Acseso exitoso!" tipo="exito" />}
-      {contracenaIncorrecta && <Alert alerta ='Contraseña incorrecta.'/>}
+      </Form>
+       {alerta.mensaje && <Alert alerta={alerta.mensaje} tipo={alerta.tipo} />}
     </div>
   );
-  
 };
 
-export default Formulario;
+export default Login;

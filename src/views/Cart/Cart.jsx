@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext"; 
+
 const Cart = () => {
-  const { cart, setCart,token } = useContext(CartContext); 
+  const { cart, setCart,userData, handlePay} = useContext(CartContext); 
 
 
   const handleAumento = (name) => {
@@ -71,13 +72,13 @@ const Cart = () => {
         ))
       )}
      
-      {!token  ?(
+      {!userData  ?(
       <h5>Inicia sesión para realizar compras</h5>
       ) : cart.length === 0 ? (
         <h5>Nada por aquí</h5>
     ):(<div className="mt-4 text-end">
                 <h4>Total: ${total.toLocaleString()}</h4>
-     <button className="btn btn-primary mt-2">Pagar 💳</button>  
+     <button className="btn btn-primary mb-5 " onClick={handlePay}>Pagar 💳</button>  
 
         </div>
     )}

@@ -6,7 +6,7 @@ const Alert = ({alerta, tipo = "error" }) => {
       : "bg-danger text-white";
 
   return (
-    <div className={`alert mt-3 ${color}`} role="alert">
+    <div className= {(`alert mt-3 ${color}`)  } role="alert">
      {alerta}
     </div>
   )

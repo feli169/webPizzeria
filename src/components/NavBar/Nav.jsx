@@ -1,17 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext"; 
+
 
 import "./Nav.css";
 
 const Nav = () => {
-  
-  const { total, itemCount } = useContext(CartContext); 
-  const {token, setToken} =useContext(CartContext);
+   const navigate = useNavigate();
+  const { total, itemCount, userData, logout} = useContext(CartContext); 
 
-  const log_out = () => {
-  setToken(false);
+
+ const handleLog_out = () => {
+  logout();
+  navigate ("/")
 };
+
 
   return (
   
@@ -24,7 +27,7 @@ const Nav = () => {
           </button>
         </Link>
         
-               {token ? (
+               {userData ? (
           <>
           <Link
           to="/profile">
@@ -32,13 +35,9 @@ const Nav = () => {
               🔓 Profile
             </button>
           </Link>
-                <Link to="/">
-            <button onClick={log_out} type="button" className="btnNav btn btn-secondary me-2">
+            <button onClick={handleLog_out} type="button" className="btnNav btn btn-secondary me-2">
               🔒 Logout
-            </button> 
-            </Link>
-
-           
+            </button>            
           </>
         ) : (
           <>
