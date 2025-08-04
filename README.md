@@ -38,27 +38,27 @@ Permite simular un sistema de compra de pizzas con carrito, autenticación, y co
 
 ### 1. Clona el repositorio
 
-bash
-git clone https://github.com/feli169/webPizzeria.git
-cd webPizzeria
+- terminal
+- git clone https://github.com/feli169/webPizzeria.git
+- cd webPizzeria
 
 ---
 
 
 2. Instala las dependencias
 
-cd Pizzeria
-npm install
-npm run dev
+- cd Pizzeria
+- npm install
+- npm run dev
 
 ---
 cd ..
 
 ---
 
-cd api-backend-Pizzeria
-npm install
-npm run dev
+- cd api-backend-Pizzeria
+- npm install
+- npm run dev
 
 
-Proyecto realizado como parte del curso de Desarrollo Full Stack JavaScript en Desafío Latam.
+## Proyecto realizado como parte del curso de Desarrollo Full Stack JavaScript en Desafío Latam.
